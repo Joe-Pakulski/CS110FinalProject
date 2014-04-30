@@ -35,15 +35,31 @@ public class Deck
      shuffle();
    
    }
+   
+   /**
+   * Deals a card from the deck
+   * Removes a card from the deck and returns it
+   * @return c a card object
+   */
    public Card dealCard()
    {
       Card c = deck.remove(0);  //  remove it (returns removed object)
       return c;
    }
+   
+   /**
+   * Counts the cards in the deck
+   * @return size of the deck
+   */
    public int cardsRemaining()
    {  
       return deck.size();
    }
+   
+   /**
+   * shuffles the deck
+   * randomizes the order of the cards in deck
+   */
    public void shuffle()
    {
       int randNum;

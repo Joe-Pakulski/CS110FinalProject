@@ -12,7 +12,7 @@ public class WarGui extends JFrame
   private JPanel ComputerPanel1; private JPanel ComputerPanel2;
   private JPanel CounterPanel1; private JPanel CounterPanel2;
   private JPanel CounterPanel3; private JPanel CounterPanel4;
-  private JPanel MessagePanel; private JPanel ButtonPanel;
+  private JPanel MessagePanel; private JPanel ButtonPanel; private JPanel blank;
   
   private ImageIcon back = new ImageIcon("back.jpg");//Back of the Card imageIcon
   private JLabel PlayerHand = new JLabel(back); //Player Hand Image
@@ -27,11 +27,16 @@ public class WarGui extends JFrame
   DiscardPile pile1; DiscardPile pile2; DiscardPile warPile;
   private boolean over = false; private boolean war = false;
   
+  /*
+  * A gui for the game of war
+  * it has 9 panels and a button
+  *
+  */
   public WarGui()
   {
     setTitle("War Card Game");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    setLayout(new FlowLayout());
+    setLayout(new GridLayout(3,4));
     
     //Build the Panels
     buildCardPanels();
@@ -48,6 +53,7 @@ public class WarGui extends JFrame
     add(CounterPanel3);
     add(CounterPanel4);
     
+    add(blank);
     add(MessagePanel);
     add(ButtonPanel);
     
@@ -56,6 +62,10 @@ public class WarGui extends JFrame
     
   }
   
+  /**
+   * Builds the card panels of the gui
+   * add each image to the panel
+   */
   public void buildCardPanels()
   {
    PlayerPanel1 = new JPanel();
@@ -66,8 +76,14 @@ public class WarGui extends JFrame
    ComputerPanel1.add(ComputerCard);
    ComputerPanel2 = new JPanel();
    ComputerPanel2.add(ComputerHand);
+   //A blank panel to clean up the guis interface
+   blank = new JPanel();
   }
   
+   /**
+   * Builds the counter panels of the gui
+   * add each counter to the panel
+   */
   public void buildCounterPanels()
   {
    CounterPanel1 = new JPanel();
@@ -80,6 +96,10 @@ public class WarGui extends JFrame
    CounterPanel4.add(Counter4);
   }
   
+  /**
+   * Builds the button and message panels of the gui
+   * add the message and button to the panels
+   */
   public void buildButton()
   {
    MessagePanel = new JPanel();
@@ -93,6 +113,11 @@ public class WarGui extends JFrame
    ButtonPanel.add(NewGame);
   }
 
+  /**
+   * This is the button to create a new game
+   * it creates a fresh deck and deals the cards to the two players
+   * it sets the counters, adds the play button
+   */
   class ButtonListener1 implements ActionListener
   {
     public void actionPerformed(ActionEvent e)
@@ -123,6 +148,11 @@ public class WarGui extends JFrame
      
   }
 
+  /**
+   * This is the button to play the game
+   * it simulates a game of war
+   * and depending on game conditions plays out the game
+   */
   class ButtonListener2 implements ActionListener
   {
     public void actionPerformed(ActionEvent e)
@@ -232,7 +262,10 @@ public class WarGui extends JFrame
      }
     }
      
-
+ /**
+ * Main method
+ * Runs the War Gui
+ */
  public static void main(String [] args)
    {
     new WarGui();

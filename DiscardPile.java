@@ -2,13 +2,24 @@ import java.util.Random;
 import java.util.ArrayList;
 import javax.swing.*;
 
+/**
+ * Representation of a discard pile of cards
+ * A discard pile contains an ArrayList of Card objects
+ * DiscardPile object extends a CardPile object
+ * @Joe Pakulski
+ */
 public class DiscardPile extends CardPile
 {  
   public void addPile(Card c)
    {
      pile.add(c);
    }
-   
+  
+  /**
+   * Shuffles the pile and deal to a hand
+   * Removes card objects from the DiscardPile object
+   * and adds them to a PlayerHand object
+   */  
   public void toHand(PlayerHand h)
   {
    shuffle();
@@ -20,7 +31,11 @@ public class DiscardPile extends CardPile
    }
   }
   
-     public void shuffle()
+  /**
+   * shuffles the deck
+   * randomizes the order of the cards in deck
+   */
+  public void shuffle()
    {
       int randNum;
       Card temp;
